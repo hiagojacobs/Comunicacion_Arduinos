@@ -1,0 +1,71 @@
+############################# Arduino Mestro ####################################
+
+#include <RS485.h>
+
+const int potPin = A0;
+const int buttonPin = 2;
+int potValue = 0;
+int buttonState = 0;
+
+void setup() {
+  pinMode(buttonPin, INPUT);
+  RS485.begin(9600);
+}
+
+void loop() {
+  buttonState = digitalRead(buttonPin);
+
+  if (buttonState == HIGH) { // Si el botón está presionado
+    potValue = analogRead(potPin);
+    RS485.beginTransmission();
+    RS485.write(potValue / 4); // Convertir a un valor de 8 bits
+    RS485.endTransmission();
+    delay(100);
+  }
+}
+
+
+########################## Arduino Esclavo 1 ####################################
+
+#include <RS485.h>
+
+int receivedValue = 0;
+
+void setup() {
+  RS485.begin(9600);
+}
+
+void loop() {
+  if (RS485.available()) {
+    receivedValue = RS485.read();
+    RS485.beginTransmission();
+    RS485.write(receivedValue); // Enviar el valor recibido al siguiente Arduino
+    RS485.endTransmission();
+  }
+  delay(100);
+}
+
+
+########################## Arduino Esclavo 2 ####################################
+
+#include <RS485.h>
+#include <Servo.h>
+
+Servo myServo;
+int receivedValue = 0;
+
+void setup() {
+  myServo.attach(9); // Conectar el servo al pin 9
+  RS485.begin(9600);
+}
+
+void loop() {
+  if (RS485.available()) {
+    receivedValue = RS485.read();
+    int servoPos = map(receivedValue, 0, 255, 0, 180); // Mapear el valor al ángulo del servo
+    myServo.write(servoPos);
+  }
+  delay(100);
+}
+
+
