@@ -1,1 +1,1 @@
-Este repositório corresponde a un prático de comunicación serial entre arduinos de la disciplina de Redes Industriales del 6to semestre de la carrera de Ingenieria en Control y Automática de la Universidad Tecnológica del Uruguay. 
+Este repositório corresponde a los códigos utilizados en un prático de comunicación serial entre arduinos, de la disciplina de Redes Industriales del 6to semestre de la carrera de Ingenieria en Control y Automática de la Universidad Tecnológica del Uruguay. 
