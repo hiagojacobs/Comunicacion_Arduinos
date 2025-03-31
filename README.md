@@ -1,1 +1,1 @@
-Este repositório corresponde a los códigos utilizados en un prático de comunicación serial entre arduinos, de la disciplina de Redes Industriales del 6to semestre de la carrera de Ingeniería en Control y Automática de la Universidad Tecnológica del Uruguay (UTEC). 
+This repository corresponds to the codes used in a practical serial communication between Arduinos, from the Industrial Networks discipline of the 6th semester of the Engineering career in Control and Automatics of the Universidad Tecnológica del Uruguay (UTEC).
